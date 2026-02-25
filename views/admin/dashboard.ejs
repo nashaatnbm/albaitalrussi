@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>لوحة التحكم | البيت الروسي</title>
+  <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+
+<div class="admin-layout">
+  <!-- Sidebar -->
+  <aside class="admin-sidebar">
+    <div class="sidebar-brand">🐻 البيت الروسي<br><small style="font-size:10px;color:#666;font-weight:400">لوحة التحكم</small></div>
+    <a href="/admin" class="sidebar-link active">📊 الطلبات</a>
+    <a href="/admin/customers" class="sidebar-link">👥 العملاء</a>
+    <a href="/" class="sidebar-link">🏠 الموقع</a>
+    <a href="/auth/logout" class="sidebar-link" style="margin-top:auto;color:#e05252;">🚪 تسجيل الخروج</a>
+  </aside>
+
+  <!-- Main Content -->
+  <main class="admin-main">
+    <div class="admin-header">
+      <h1>📊 لوحة التحكم</h1>
+      <p>مرحباً <%= currentUser.name %> — <%= new Date().toLocaleDateString('ar-EG', {weekday:'long', year:'numeric', month:'long', day:'numeric'}) %></p>
+    </div>
+
+    <!-- Stats -->
+    <div class="stats-grid">
+      <div class="stat-card">
+        <div class="stat-card-icon">📦</div>
+        <div class="stat-card-val"><%= stats.totalOrders %></div>
+        <div class="stat-card-label">إجمالي الطلبات</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-card-icon">⏳</div>
+        <div class="stat-card-val"><%= stats.pendingOrders %></div>
+        <div class="stat-card-label">طلبات قيد الانتظار</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-card-icon">👥</div>
+        <div class="stat-card-val"><%= stats.totalCustomers %></div>
+        <div class="stat-card-label">العملاء</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-card-icon">💰</div>
+        <div class="stat-card-val"><%= stats.totalRevenue.toLocaleString() %></div>
+        <div class="stat-card-label">إجمالي الإيرادات (ريال)</div>
+      </div>
+    </div>
+
+    <!-- Orders Table -->
+    <div class="table-container">
+      <div class="table-header">
+        <h2>🧾 الطلبات</h2>
+        <div class="filter-btns">
+          <a href="/admin" class="filter-btn <%= !statusFilter ? 'active' : '' %>">الكل</a>
+          <a href="/admin?status=pending" class="filter-btn <%= statusFilter==='pending' ? 'active' : '' %>">قيد الانتظار</a>
+          <a href="/admin?status=processing" class="filter-btn <%= statusFilter==='processing' ? 'active' : '' %>">قيد التنفيذ</a>
+          <a href="/admin?status=completed" class="filter-btn <%= statusFilter==='completed' ? 'active' : '' %>">مكتملة</a>
+          <a href="/admin?status=cancelled" class="filter-btn <%= statusFilter==='cancelled' ? 'active' : '' %>">ملغية</a>
+        </div>
+      </div>
+
+      <% if (orders.length === 0) { %>
+        <div style="padding:40px;text-align:center;color:#666;">لا توجد طلبات</div>
+      <% } else { %>
+      <table>
+        <thead>
+          <tr>
+            <th>رقم الطلب</th>
+            <th>العميل</th>
+            <th>المنتجات</th>
+            <th>الإجمالي</th>
+            <th>الحالة</th>
+            <th>التاريخ</th>
+            <th>تحديث</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% orders.forEach(order => { %>
+          <tr>
+            <td><span class="order-id">#<%= order._id.toString().slice(-6).toUpperCase() %></span></td>
+            <td>
+              <div class="customer-name"><%= order.user?.name || 'غير معروف' %></div>
+              <div style="font-size:11px;color:#666;"><%= order.user?.email %></div>
+              <div style="font-size:11px;color:#666;"><%= order.shippingAddress?.city %></div>
+            </td>
+            <td style="max-width:200px;font-size:12px;color:#a0a0b0;">
+              <%= order.items.map(i => `${i.productName} ×${i.quantity}`).join(', ') %>
+            </td>
+            <td style="font-weight:700;color:#d4af37;"><%= order.totalAmount %> ر.س</td>
+            <td>
+              <span class="status-badge status-<%= order.status %>">
+                <% const labels = { pending:'قيد الانتظار', processing:'قيد التنفيذ', completed:'مكتمل', cancelled:'ملغي' } %>
+                <%= labels[order.status] %>
+              </span>
+            </td>
+            <td class="order-date"><%= new Date(order.createdAt).toLocaleDateString('ar-EG') %></td>
+            <td>
+              <select class="status-select" data-id="<%= order._id %>">
+                <option value="pending" <%= order.status==='pending' ? 'selected' : '' %>>قيد الانتظار</option>
+                <option value="processing" <%= order.status==='processing' ? 'selected' : '' %>>قيد التنفيذ</option>
+                <option value="completed" <%= order.status==='completed' ? 'selected' : '' %>>مكتمل</option>
+                <option value="cancelled" <%= order.status==='cancelled' ? 'selected' : '' %>>ملغي</option>
+              </select>
+            </td>
+          </tr>
+          <% }) %>
+        </tbody>
+      </table>
+      <% } %>
+    </div>
+  </main>
+</div>
+
+<script src="/js/main.js"></script>
+</body>
+</html>
