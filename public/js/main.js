@@ -91,4 +91,40 @@ document.addEventListener('DOMContentLoaded', () => {
       if (target) target.style.display = 'block';
     });
   });
+  // =========================
+// CART COUNTER + TOAST
+// =========================
+
+let cart = JSON.parse(localStorage.getItem('cart')) || [];
+
+function saveCart() {
+  localStorage.setItem('cart', JSON.stringify(cart));
+  updateCartCount();
+}
+
+function updateCartCount() {
+  const countEl = document.getElementById("cart-count");
+  if (!countEl) return;
+
+  const total = cart.reduce((sum, item) => sum + item.quantity, 0);
+  countEl.textContent = total;
+}
+
+function showToast(message) {
+  const toast = document.createElement("div");
+  toast.className = "toast";
+  toast.innerText = message;
+
+  document.body.appendChild(toast);
+
+  setTimeout(() => {
+    toast.classList.add("show");
+  }, 100);
+
+  setTimeout(() => {
+    toast.remove();
+  }, 3000);
+}
+
+updateCartCount();
 });
