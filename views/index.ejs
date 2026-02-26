@@ -1,6 +1,7 @@
-<%- include('partials/header') %>
+<%- include(’partials/header’) %>
 
 <!-- Hero -->
+
 <section class="hero">
   <div class="hero-card">
     <div class="hero-content">
@@ -8,9 +9,194 @@
       <h1 class="hero-title">
         أفضل المنتجات<br>
         الروسية <span>الأصيلة</span><br>
-…<!-- زر السلة العائم -->
+        لبيتك
+      </h1>
+      <p class="hero-sub">نجلب لك أجود المنتجات الروسية مباشرة من المصنع — شوكولاتة، شاي، فراء، سكاكين وأكثر. توصيل سريع للسعودية والإمارات وجميع الدول العربية.</p>
+      <div class="hero-btns">
+        <a href="#products" class="btn-primary">تسوق الآن ←</a>
+        <a href="#products" class="btn-secondary">اكتشف العروض</a>
+      </div>
+      <div class="hero-stats">
+        <div class="stat"><span class="stat-val">⭐ 4.9</span><span class="stat-label">تقييم العملاء</span></div>
+        <div class="stat"><span class="stat-val">17+</span><span class="stat-label">دولة توصيل</span></div>
+        <div class="stat"><span class="stat-val">5000+</span><span class="stat-label">طلب ناجح</span></div>
+      </div>
+    </div>
+    <div class="hero-bear">🐻</div>
+  </div>
+</section>
+
+<!-- Products -->
+
+<section class="section" id="products">
+  <h2 class="section-title">🛍️ منتجاتنا المميزة</h2>
+  <div class="products-grid">
+
+```
+<div class="product-card" data-id="1" data-name="شوكولاتة روسية أصيلة" data-price="45" data-emoji="🍫">
+  <div class="product-img">🍫</div>
+  <div class="product-info">
+    <div class="product-cat">شوكولاتة وحلويات</div>
+    <div class="product-name">شوكولاتة روسية أصيلة</div>
+    <div class="product-price">45 <span>ريال</span></div>
+    <div class="product-actions">
+      <div class="qty-control">
+        <button class="qty-btn minus">−</button>
+        <span class="qty-display">1</span>
+        <button class="qty-btn plus">+</button>
+      </div>
+      <button class="btn-add-cart">🛒 أضف للسلة</button>
+    </div>
+  </div>
+</div>
+
+<div class="product-card" data-id="2" data-name="شاي روسي فاخر" data-price="60" data-emoji="🍵">
+  <div class="product-img">🍵</div>
+  <div class="product-info">
+    <div class="product-cat">شاي وقهوة</div>
+    <div class="product-name">شاي روسي فاخر</div>
+    <div class="product-price">60 <span>ريال</span></div>
+    <div class="product-actions">
+      <div class="qty-control">
+        <button class="qty-btn minus">−</button>
+        <span class="qty-display">1</span>
+        <button class="qty-btn plus">+</button>
+      </div>
+      <button class="btn-add-cart">🛒 أضف للسلة</button>
+    </div>
+  </div>
+</div>
+
+<div class="product-card" data-id="3" data-name="قهوة روسية" data-price="75" data-emoji="☕">
+  <div class="product-img">☕</div>
+  <div class="product-info">
+    <div class="product-cat">شاي وقهوة</div>
+    <div class="product-name">قهوة روسية</div>
+    <div class="product-price">75 <span>ريال</span></div>
+    <div class="product-actions">
+      <div class="qty-control">
+        <button class="qty-btn minus">−</button>
+        <span class="qty-display">1</span>
+        <button class="qty-btn plus">+</button>
+      </div>
+      <button class="btn-add-cart">🛒 أضف للسلة</button>
+    </div>
+  </div>
+</div>
+
+<div class="product-card" data-id="4" data-name="فراء روسي طبيعي" data-price="850" data-emoji="🧥">
+  <div class="product-img">🧥</div>
+  <div class="product-info">
+    <div class="product-cat">فراء روسي</div>
+    <div class="product-name">فراء روسي طبيعي</div>
+    <div class="product-price">850 <span>ريال</span></div>
+    <div class="product-actions">
+      <div class="qty-control">
+        <button class="qty-btn minus">−</button>
+        <span class="qty-display">1</span>
+        <button class="qty-btn plus">+</button>
+      </div>
+      <button class="btn-add-cart">🛒 أضف للسلة</button>
+    </div>
+  </div>
+</div>
+
+<div class="product-card" data-id="5" data-name="سكاكين روسية" data-price="220" data-emoji="🔪">
+  <div class="product-img">🔪</div>
+  <div class="product-info">
+    <div class="product-cat">سكاكين</div>
+    <div class="product-name">سكاكين روسية</div>
+    <div class="product-price">220 <span>ريال</span></div>
+    <div class="product-actions">
+      <div class="qty-control">
+        <button class="qty-btn minus">−</button>
+        <span class="qty-display">1</span>
+        <button class="qty-btn plus">+</button>
+      </div>
+      <button class="btn-add-cart">🛒 أضف للسلة</button>
+    </div>
+  </div>
+</div>
+
+<div class="product-card" data-id="6" data-name="مستحضرات تجميل روسية" data-price="130" data-emoji="💄">
+  <div class="product-img">💄</div>
+  <div class="product-info">
+    <div class="product-cat">مستحضرات تجميل</div>
+    <div class="product-name">مستحضرات تجميل روسية</div>
+    <div class="product-price">130 <span>ريال</span></div>
+    <div class="product-actions">
+      <div class="qty-control">
+        <button class="qty-btn minus">−</button>
+        <span class="qty-display">1</span>
+        <button class="qty-btn plus">+</button>
+      </div>
+      <button class="btn-add-cart">🛒 أضف للسلة</button>
+    </div>
+  </div>
+</div>
+
+<div class="product-card" data-id="7" data-name="مكملات غذائية" data-price="95" data-emoji="💊">
+  <div class="product-img">💊</div>
+  <div class="product-info">
+    <div class="product-cat">مكملات غذائية</div>
+    <div class="product-name">مكملات غذائية</div>
+    <div class="product-price">95 <span>ريال</span></div>
+    <div class="product-actions">
+      <div class="qty-control">
+        <button class="qty-btn minus">−</button>
+        <span class="qty-display">1</span>
+        <button class="qty-btn plus">+</button>
+      </div>
+      <button class="btn-add-cart">🛒 أضف للسلة</button>
+    </div>
+  </div>
+</div>
+
+<div class="product-card" data-id="8" data-name="عسل روسي طبيعي" data-price="110" data-emoji="🍯">
+  <div class="product-img">🍯</div>
+  <div class="product-info">
+    <div class="product-cat">مكملات غذائية</div>
+    <div class="product-name">عسل روسي طبيعي</div>
+    <div class="product-price">110 <span>ريال</span></div>
+    <div class="product-actions">
+      <div class="qty-control">
+        <button class="qty-btn minus">−</button>
+        <span class="qty-display">1</span>
+        <button class="qty-btn plus">+</button>
+      </div>
+      <button class="btn-add-cart">🛒 أضف للسلة</button>
+    </div>
+  </div>
+</div>
+```
+
+  </div>
+</section>
+
+<!-- ===== CART SIDEBAR ===== -->
+
+<div class="cart-overlay" id="cart-overlay"></div>
+<div class="cart-sidebar" id="cart-sidebar">
+  <div class="cart-header">
+    <h2>🛒 سلة التسوق</h2>
+    <button class="cart-close" id="cart-close">✕</button>
+  </div>
+  <div class="cart-items" id="cart-items">
+    <div class="cart-empty">السلة فارغة 🛒</div>
+  </div>
+  <div class="cart-footer" id="cart-footer" style="display:none">
+    <div class="cart-total-row">
+      <span>الإجمالي:</span>
+      <span class="cart-total" id="cart-total">0 ريال</span>
+    </div>
+    <button class="btn-checkout-cart" id="btn-goto-checkout">إتمام الطلب ←</button>
+  </div>
+</div>
+
+<!-- زر السلة العائم -->
+
 <button class="cart-float-btn" id="cart-float-btn">
   🛒 <span class="cart-count" id="cart-count">0</span>
 </button>
 
-<%- include('partials/footer') %>
+<%- include(’partials/footer’) %>
