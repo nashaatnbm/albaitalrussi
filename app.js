@@ -14,7 +14,8 @@ const app = express();
 const PORT = process.env.PORT || 3000;
 
 // ===== Database =====
-mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost:27017/albait-el-rossi')
+mongoose.connect(process.env.MONGODB_URI || 
+  mongodb+srv://Nashaat:<mnbvcxzNn9900>@cluster0.nyrqiul.mongodb.net/?appName=Cluster0 )
   .then(() => console.log('✅ MongoDB connected'))
   .catch(err => console.error('❌ MongoDB error:', err));
 
