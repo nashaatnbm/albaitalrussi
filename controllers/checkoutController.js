@@ -1,7 +1,6 @@
 const Order = require('../models/Order');
-const User = require(’../models/User’);
-const { sendTelegramNotification } = require(’../utils/telegram’);
-
+const User = require('../models/User');
+const { sendTelegramNotification } = require('../utils/telegram');
 // Products list (can be moved to DB later)
 const PRODUCTS = [
 { id: 1, name: ‘شوكولاتة روسية أصيلة’, price: 45, category: ‘شوكولاتة وحلويات’, emoji: ‘🍫’ },
@@ -17,8 +16,8 @@ const PRODUCTS = [
 // GET /checkout
 exports.getCheckout = async (req, res) => {
 try {
-res.render(‘checkout/checkout’, {
-title: ‘إتمام الطلب’,
+res.render('checkout/checkout', {
+title: 'إتمام الطلب',
 products: PRODUCTS
 });
 } catch (err) {
@@ -72,7 +71,7 @@ const order = await Order.create({
 const user = await User.findById(req.session.userId);
 await sendTelegramNotification(order, user);
 
-res.redirect(`/orders/${order._id}/success`);
+res.redirect('/orders/${order._id}/success');
 ```
 
 } catch (err) {
@@ -92,8 +91,8 @@ const order = await Order.findById(req.params.id).populate(‘user’, ‘name e
 if (!order || order.user._id.toString() !== req.session.userId.toString()) {
 return res.redirect(’/’);
 }
-res.render(‘checkout/success’, {
-title: ‘تم الطلب بنجاح’,
+res.render('checkout/success', {
+title:‘تم الطلب بنجاح’,
 order
 });
 } catch (err) {
